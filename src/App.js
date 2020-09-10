@@ -8,17 +8,19 @@ function App() {
   const [password, setPassword] = useState("js-lesson-10");
 
   function login() {
-    console.log(email);
-    console.log(password);
-    fetch(
-      LOGIN_URL /* , {
-      method: 'POST',
+    const payload = {
+      email: email,
+      password: password,
+    };
+    fetch(LOGIN_URL, {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${}`
-      }
-    } */
-    );
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
   }
   return (
     <div>
