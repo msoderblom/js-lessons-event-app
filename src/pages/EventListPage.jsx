@@ -10,6 +10,7 @@ export default function EventListPage() {
   const [eventList, setEventList] = useState(null);
   useEffect(() => {
     fetchEventList();
+    // eslint-disable-next-line
   }, []);
 
   function fetchEventList() {
