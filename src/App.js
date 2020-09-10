@@ -6,6 +6,7 @@ const LOGIN_URL = `${ROOT_URL}auth/api-token-auth/`;
 function App() {
   const [email, setEmail] = useState("test.user@willandskill.se");
   const [password, setPassword] = useState("js-lesson-10");
+  const [token, setToken] = useState(null);
 
   function login() {
     const payload = {
@@ -20,7 +21,7 @@ function App() {
       body: JSON.stringify(payload),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => setToken(data.token));
   }
   return (
     <div>
