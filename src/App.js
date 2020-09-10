@@ -1,21 +1,21 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
 
 const ROOT_URL = "http://yoshi.willandskill.eu:8999/api/v1/";
 const LOGIN_URL = `${ROOT_URL}auth/api-token-auth/`;
 
 function App() {
-  const emailInput = useRef(null);
-  const passwordInput = useRef(null);
+  const [email, setEmail] = useState("test.user@willandskill.se");
+  const [password, setPassword] = useState("js-lesson-10");
+
   function login() {
-    const email = emailInput.current.value;
-    const password = passwordInput.current.value;
     console.log(email);
     console.log(password);
     fetch(
       LOGIN_URL /* , {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${}`
       }
     } */
     );
@@ -26,16 +26,24 @@ function App() {
 
       <div>
         <div>
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email" type="email">
+            Email
+          </label>
           <input
-            ref={emailInput}
             name="email"
             placeholder="jane.doe@company.com"
+            value={email}
+            onChange={(e) => setEmail(e.currentTarget.value)}
           />
         </div>
         <div>
           <label htmlFor="password">Password</label>
-          <input ref={passwordInput} name="password" type="password" />
+          <input
+            name="password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.currentTarget.value)}
+          />
         </div>
         <button onClick={login}>Login</button>
       </div>
