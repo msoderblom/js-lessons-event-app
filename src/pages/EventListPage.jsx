@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
+import { Link } from "react-router-dom";
 
 const ROOT_URL = "http://yoshi.willandskill.eu:8999/api/v1/";
 const EVENT_LIST_URL = `${ROOT_URL}events/events/`;
@@ -32,7 +33,7 @@ export default function EventListPage() {
         eventList.map((eventItem) => {
           return (
             <div key={eventItem.id}>
-              <p>{eventItem.title}</p>
+              <Link to={`event/${eventItem.slug}`}>{eventItem.title}</Link>
             </div>
           );
         })}
